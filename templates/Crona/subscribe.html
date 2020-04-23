@@ -1,0 +1,56 @@
+{% extends 'crona/base.html' %}
+{% block title %}
+    Cronavirus | Subscribe
+{% endblock %}
+{% block style %}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
+    justify-content: center;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height:490px;
+}
+.jumbotron{
+  background-color: #fff;
+}
+
+   {% endblock %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5">Thanks For Choosing Alert!! </h1>
+  </div>
+
+</div>
+  <div class="container-fluid">
+    <div class="row">
+      {% for new, des, i in mylist %}
+      <div class="card mt-5" style="width: 18rem; margin:10px;">
+        <img style="height:180px;" src="{{i}}" class="card-img-top" alt="...">
+         <div style="" class="card-body">
+             <h5 style="font-size:18px;" class="card-title">{{des | truncatechars:120 }}</h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
+              <a href="#" class="btn btn-primary">full Read</a>
+         </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

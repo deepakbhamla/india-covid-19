@@ -1,0 +1,163 @@
+{% extends 'Crona/base.html'%}
+{% block title %}
+    SE7EN | COVID-19
+{% endblock %}
+{% block style %}
+    .box{
+      margin:10px;
+      width:200px;
+      height:100px;
+      text-align:center;
+      border-radius:10px;
+      <!-- background:#007BFF; -->
+    }
+    .row{
+      margin:10px;
+      display:flex:
+      flex-wrap:no-wrap;
+      justify-content:center;
+
+    }
+    img {
+    vertical-align: middle;
+    border-style: none;
+    /* width: 55%; */
+    /* height: 10%; */
+    max-width: -webkit-fill-available;
+}
+p {
+    margin: 15px;
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+.imgg{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.jumbotron{
+  background-color: #e57373;
+  color:#fff;
+}
+thead{
+  background-color:#ef9a9a;
+  color:#fff;
+  text-align:center;
+}
+.list-group-item{
+  
+}
+.state{
+  font-weight:700;
+  font-size:17px;
+  width:100%;
+  margin-right:40px;
+  
+}
+.total{
+  font-weight:750;
+  font-size:18px;
+  padding:5px;
+  border-radius:10px;
+  margin:20px;
+  color:#fff;
+  background-color:#4dabf5;
+  
+}
+.recover,.death{
+  font-weight:750;
+  font-size:18px;
+  color:#fff;
+  background-color:#ef9a9a;
+  padding:5px 10px;
+  border-radius:10px;
+  margin:20px;
+  
+}
+.recover{
+  background-color:#81c784;
+}
+.index{
+  font-size:18px;
+  color:#fff;
+  padding:10px 10px;
+  border-radius:5px;
+  margin:20px;
+
+  width:100px;
+  height:20px;
+}
+.list-group-item {
+  cursor:pointer;
+  transition:all 0.5s;
+  animation: infinite bounce delay-2s;
+
+}
+.list-group-item:hover{
+  background-color:#ede7f6;
+  
+}
+@media only screen and (max-width: 600px) {
+  .state,.recover,.death,.total{
+    font-size:12px;
+    margin:3px;
+  }
+  .index{
+    font-size:10px;
+    color:#FFFFFF;
+    padding:10px;
+    border-radius:5px;
+    margin:0px 5px;
+   
+    width:100px;
+    height:20px;
+  }
+  
+}
+@media only screen and (min-width: 600px) {
+
+}
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron  jumbotron-fluid">
+    <h3 class="mt-5 text-uppercase text-center ">Stay Home Stay Safe</h3>
+  
+</div>
+    <ul class="list-group ">
+      {% if performance %}
+      <li class="list-group-itemm mb-3 text-center mb-5">
+        <span style="background-color:#4dabf5;" class="index ">
+          Confirmed
+          <strong>: {{ Confirmed}}</strong>
+        
+        </span> 
+        <span style="background-color: #81c784;" class="index">
+          Recover
+          <strong> : {{Cured}}</strong>
+        </span>  
+        <span style="background-color: #ef9a9a;" class="index ">
+          Died
+          <strong> : {{Death}}</strong>
+        </span> 
+      </li>
+
+        {% for data in performance %}
+            
+          <li class=" list-group-item  id="data" ">
+           <span  class="state text-center ">{{data.1|truncatechars:22}}</span>
+           <span title="Confirmed Cases" class="total animated infinite bounce delay-2s ">{{data.2}}</span>
+           <span title="Recover Patients" class="recover ">{{data.3}}</span>
+           <span title="Died patients" class="death">{{data.4}}</span>
+           
+          </li>
+            
+        {% endfor %}
+      {% endif %}
+    </ul>
+           
+    
+{% endblock %}

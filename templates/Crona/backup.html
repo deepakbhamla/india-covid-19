@@ -1,0 +1,41 @@
+<div class="alert alert-warning mt-5" role="alert">
+    Recovered Patient Data is Not Available
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+  </div>
+
+  <p>{{ dates }}</p>
+  <hr class="my-4">
+
+  <p class="display-6 ">worldwide  <span style="font-size:16px;" class="text-danger"></span></p>
+  <div class="row ">
+    {% for key , value in virusdata.items %}
+       <div class="box">
+         <h4 class="display-6 text-center">{{ key }}</h4>
+         <h2 class="text-primary text-center">{{ value }}</h2>
+       </div>
+    {% endfor %}
+    <!-- <img   src="data:image/png;base64,{{ graphic|safe }}">  </div> -->
+
+  </div>
+  <hr class="my-4">
+
+  <p class="display-6 ">India <span style="font-size:16px;" class="text-danger mt-5"></span></p>
+
+<div class="row">
+  {% for key , value in virusdata1.items %}
+  <div class="box">
+      <h4 class="display-6 text-center">{{ key }}</h4>
+      <h2 class="text-primary text-center">{{ value }}</h2>
+  </div>
+{% endfor %}
+
+</div>
+  <div class="imgg">
+    <img   src="data:image/png;base64,{{ graphic1|safe }}">
+   </div>
+ <hr class="my-4">
+
+  <!-- </div>
+
+  <div > -->

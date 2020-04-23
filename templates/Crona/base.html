@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="black">
+    <link rel="icon" class="img-circle" property="og:title" sizes="192x192" href="static/images/images.png">
+  <!-- additional meta tag -->
+  <meta name="keywords" content=" ">
+  <meta name="description" content="A DEEPAK BHAMLA Project On COVID-19 in association with SE7EN INTERNATIONAL CODING COMMUNITY ">
+  <meta name="author" content="Deepak Bhamla">
+
+    <!-- Windows Phone -->
+     <meta name="msapplication-navbutton-color" content="black">
+     <!-- iOS Safari -->
+     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <link rel="apple-touch-icon" href="static/images/images.png"> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--google fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+   
+  <style media="screen">
+      body{ font-family: 'Roboto', sans-serif; }
+      footer{
+         background-color: #F8F9FA !important;
+         width:100%;
+         height:40px;
+         color:#000000;
+         
+      }   
+      .navbar-dark, .bg-danger{ background-color: #039be5;}
+      .navbar{ padding: 0.1rem 0.5rem; }
+      .collapse ,.navbar-collapse{ transition: all 1s; }
+      .nav-link{  }
+      .nav-link:hover{color:red; }
+      .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+       margin-top: 1rem;
+      font-weight: 500;
+       line-height: 1.2;
+      }
+      .dark{
+        color:black;
+      }
+       .dark:hover{
+         color: brown;
+       }
+       
+
+       {% block style %}     {% endblock %}
+
+   </style>
+    <title>
+
+      {% block title %}
+
+      {%  endblock %}
+    </title>
+  </head>
+  <body>
+    <nav class="fixed-top mb-3 navbar navbar-expand-lg navbar-light bg-light text-white">
+    <a  style="font-size:25px;" class="navbar-brand "  href="{% url 'home' %}">SE7EN
+      <span style="font-size:12px;">COVID-19</span>
+ 
+     </a>
+     <div class="ml-auto text-uppercase">
+      <a  style="font-size:14px;" class="    navbar-brand dark " href="{% url 'news' %}" >News </a>
+
+      <a style="font-size:14px;" class="  navbar-brand dark " href="{% url 'symptoms' %}" >mapView </a>
+     
+ 
+     </div>
+     
+     </nav>
+    {% block body %}
+    
+  {% endblock %}
+  <footer class="text-center ">
+      <a href='https://www.instagram.com/itsdb7/' style="cursor: pointer; color:#000000;"  class="text-center text-uppercase  margin-top:10px;"> 
+        
+        made with <ion-icon style="position:absolute;font-size: 20px; margin-top:2px; margin-left:5px;" name="heart-outline"></ion-icon>
+      </a>
+      <a href="https://github.com/itsdb7/COVID-19-Visualizer" style="color:#000000; float: right;font-size: 20px; margin-top:0px; margin-right: 10px;">
+        <ion-icon name="logo-github"></ion-icon>
+      </a> 
+  </footer>
+ 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js"></script>
+    <script>
+      {% block scripts %}
+      {% endblock %}
+
+      // Prepare demo data
+// Data is joined to map using value of 'hc-key' property by default.
+// See API docs for 'joinBy' for more info on linking data and map.
+
+    </script>
+      </body>
+</html>
