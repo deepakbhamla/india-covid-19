@@ -69,6 +69,7 @@ def Symptoms(request):
     for row in all_rows:
         stat = extract_content(row.find_all('td'))
         stats.append(stat[1:3])
+    stats = stats[0:34]    
     new_stats = [[i[0].lower(), int(i[1])] for i in stats if len(i) != 0]
     new_stats.pop()
     for i in new_stats:
