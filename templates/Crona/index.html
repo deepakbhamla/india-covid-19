@@ -97,9 +97,35 @@ thead{
   background-color:#ede7f6;
   
 }
+.container{
+  display:flex;
+  justify-content:center;
+  text-align:center;
+  text-transform:uppercase;
+  flex-wrap:wrap;
+}
+.box1{
+  border-bottom: 5px solid rgba(0,0,255,0.5);
+  color:rgba(0,0,255,0.5);
+}
+.box2{
+  border-bottom: 5px solid rgba(0,255,0,0.5);
+  color:rgba(0,255,0,0.5);
+
+}
+.box3{
+  border-bottom: 5px solid rgba(255,0,0,0.5);
+  color:rgba(255,0,0,0.5);
+
+}
+.box{
+  margin:10px;
+  margin-bottom:20px;
+}
+
 @media only screen and (max-width: 600px) {
   .state,.recover,.death,.total{
-    font-size:10px;
+    font-size:12px;
     margin:3px;
   }
   .index{
@@ -127,23 +153,21 @@ thead{
     <h3 class="mt-5 text-uppercase text-center ">Stay Home Stay Safe</h3>
   
 </div>
-    <ul class="list-group ">
+      <div class="container">
+      <div class="box1 box">
+           <p>Infected</p>
+           <p><strong>{{ Confirmed}}</strong></p>
+      </div>
+      <div class="box2 box">
+        <p>Cured</p>
+        <p><strong>{{ Cured}}</strong></p>
+      </div>
+      <div class="box3 box">
+        <p>Deaths</p>
+        <p><strong>{{ Death}}</strong></p>
+      </div>
+  </div>
       {% if performance %}
-      <li class="list-group-itemm mb-3 text-center mb-5">
-        <span style="background-color:#4dabf5;" class="index ">
-          Confirmed
-          <strong>: {{ Confirmed}}</strong>
-        
-        </span> 
-        <span style="background-color: #81c784;" class="index">
-          Recover
-          <strong> : {{Cured}}</strong>
-        </span>  
-        <span style="background-color: #ef9a9a;" class="index ">
-          Die
-          <strong> : {{Death}}</strong>
-        </span> 
-      </li>
 
         {% for data in performance %}
             
