@@ -29,10 +29,11 @@ def Home(request):
             stats.append(stat)
     records =stats[33]
     
-    Confirmed, Cured, Death = records[1:]
-    Confirmed = int(Confirmed.split('*')[0])
-    Cured = int(Cured)
-    Death = int(Death)
+    Confirmed, Cured, Death = records[1:]   
+    Confirmed = (Confirmed.split('*')[0])
+    Cured = (Cured)
+    Death = (Death)
+
     stats= stats[0:33]   
     context = {'performance':stats,'Confirmed':Confirmed,'Cured':Cured,'Death':Death}
     return render(request,"Crona/index.html",context)
