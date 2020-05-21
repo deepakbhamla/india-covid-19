@@ -29,7 +29,7 @@ def Home(request):
             stats.append(stat)
     records =stats[34]
     
-    Confirmed, Cured, Death = records[1:]   
+    Confirmed, Cured, Death = records[2:]   
     Confirmed = (Confirmed.split('*')[0])
     Cured = (Cured)
     Death = (Death)
