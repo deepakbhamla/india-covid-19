@@ -27,14 +27,14 @@ def Home(request):
         stat = extract_contents(row.find_all('td')) 
         if stat: 
             stats.append(stat)
-    records =stats[35]
+    records =stats[36]
     
     Confirmed, Cured, Death = records[2:]   
     Confirmed = (Confirmed.split('*')[0])
     Cured = (Cured)
     Death = (Death)
 
-    stats= stats[0:33]   
+    stats= stats[0:34]   
     context = {'performance':stats,'Confirmed':Confirmed,'Cured':Cured,'Death':Death}
     return render(request,"Crona/index.html",context)
  
