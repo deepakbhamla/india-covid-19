@@ -61,10 +61,10 @@ thead{
   border-radius:10px;
   margin:20px;
   color:#fff;
-  background-color:#4dabf5;
+  background-color:rgba(0,0,255,0.5);
   
 }
-.recover,.death{
+.recover,.death,.active{
   font-weight:750;
   font-size:18px;
   color:#fff;
@@ -76,6 +76,10 @@ thead{
 }
 .recover{
   background-color:#81c784;
+}
+.active{
+  background-color:#2196f3;
+
 }
 .index{
   font-size:18px;
@@ -109,14 +113,18 @@ thead{
   color:rgba(0,0,255,0.5);
 }
 .box2{
-  border-bottom: 5px solid rgba(0,255,0,0.5);
-  color:rgba(0,255,0,0.5);
+  border-bottom: 5px solid #81c784;
+  color:#81c784;
 
 }
 .box3{
-  border-bottom: 5px solid rgba(255,0,0,0.5);
-  color:rgba(255,0,0,0.5);
+  border-bottom: 5px solid #ef9a9a;
+    color:#ef9a9a;
 
+}
+.box4{
+  border-bottom: 5px solid #2196f3;
+  color:#2196f3;
 }
 .box{
   margin:10px;
@@ -124,7 +132,7 @@ thead{
 }
 
 @media only screen and (max-width: 600px) {
-  .state,.recover,.death,.total{
+  .state,.recover,.death,.total,.active{
     font-size:12px;
     margin:3px;
   }
@@ -140,10 +148,6 @@ thead{
   }
   
 }
-@media only screen and (min-width: 600px) {
-
-}
-
 
 {% endblock %}
 
@@ -155,9 +159,14 @@ thead{
 </div>
       <div class="container">
       <div class="box1 box">
-           <p>Infected</p>
+           <p>Total</p>
            <p><strong>{{ Confirmed}}</strong></p>
       </div>
+      <div class="box4 box">
+        <p>Active</p>
+        <p><strong>{{ Active}}</strong></p>
+   </div>
+
       <div class="box2 box">
         <p>Cured</p>
         <p><strong>{{ Cured}}</strong></p>
@@ -173,9 +182,11 @@ thead{
             
           <li class=" list-group-item  id="data" ">
            <span  class="state text-center ">{{data.1|truncatechars:22}}</span>
-           <span title="Confirmed Cases" class="total animated infinite bounce delay-2s ">{{data.2}}</span>
-           <span title="Recover Patients" class="recover ">{{data.3}}</span>
-           <span title="Died patients" class="death">{{data.4}}</span>
+           <span title="Total Cases" class="total animated infinite bounce delay-2s ">{{data.5}}</span>
+           <span title="Active Cases" class="active">{{data.2}}</span>
+
+           <span title="Recover Cases" class="recover ">{{data.3}}</span>
+           <span title="Died Cases" class="death">{{data.4}}</span>
            
           </li>
             
