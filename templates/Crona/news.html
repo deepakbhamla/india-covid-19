@@ -1,27 +1,27 @@
 {% extends 'Crona/base.html' %}
 {% block title %}
-    SE7EN | NEWS
+SE7EN | NEWS
 {% endblock %}
 {% block style %}
 .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    justify-content:space-between;
-    margin-right: -15px;
-    margin-left: -15px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Montserrat', sans-serif;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+justify-content:space-between;
+margin-right: -15px;
+margin-left: -15px;
+font-family: 'Raleway', sans-serif;
+font-family: 'Montserrat', sans-serif;
 
-    justify-content: center;
+justify-content: center;
 }
 .jumbotron{
-  background-color: #e57373;
-  color:#fff;
+background-color: #e57373;
+color:#fff;
 }
 
-  {% endblock %}
+{% endblock %}
 
 {% block body %}
 <div class="jumbotron  jumbotron-fluid">
@@ -29,19 +29,20 @@
 
 </div>
 
-  <div class="container-fluid mt-3">
-    <div class="row">
-      {% for new, des, i in mylist %}
-      <div class="card mt-5" style="width: 18rem; margin:10px;">
-        <img style="height:180px;" src="{{i}}" class="card-img-top" alt="...">
-         <div style="" class="card-body">
-             <h5 style="font-size:18px;" class="card-title">{{des | truncatechars:120 }}</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
-              <a target="_blank" href="https://timesofindia.indiatimes.com/" class="btn btn-danger">full Read</a>
-         </div>
-      </div>
-      {% endfor %}
-    </div>
+<div class="container-fluid mt-3">
+  <div class="row">
+    {% for news, description, i,url in mylist %}
 
+    <div class="card mt-5" style="width: 18rem; margin:10px;">
+      <img style="height:180px;" src="{{i}}" class="card-img-top" alt="...">
+      <div style="" class="card-body">
+        <h5 style="font-size:18px;" class="card-title">{{description | truncatechars:120 }}</h5>
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
+        <a target="_blank" href="{{url}}" class="btn btn-danger">full Read</a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
+
+</div>
 {% endblock %}

@@ -1,88 +1,88 @@
 {% extends 'Crona/base.html'%}
 {% block title %}
-    SE7EN | MAPVIEW
+SE7EN | MAPVIEW
 {% endblock %}
 {% block style %}
- .jumbotron{
-      background-color: #e57373;
-      color:#fff;
-    }
-    #container {
-      height: 500px; 
-      min-width: 310px; 
-      max-width: 800px; 
-      margin: 0 auto; 
-  }
-  .loading {
-      margin-top: 10em;
-      text-align: center;
-      color: gray;
-  }
-  rect[Attributes Style] {
-    display:none;
-    fill: rgb(255, 255, 255);
-    x: 0.5;
-    y: 0.5;
-    width: 24;
-    height: 22;
-    rx: 2;
-    ry: 2;
-    stroke: none;
-    stroke-width: 1;
+.jumbotron{
+background-color: #e57373;
+color:#fff;
 }
- 
- {% endblock %}
+#container {
+height: 500px;
+min-width: 310px;
+max-width: 800px;
+margin: 0 auto;
+}
+.loading {
+margin-top: 10em;
+text-align: center;
+color: gray;
+}
+rect[Attributes Style] {
+display:none;
+fill: rgb(255, 255, 255);
+x: 0.5;
+y: 0.5;
+width: 24;
+height: 22;
+rx: 2;
+ry: 2;
+stroke: none;
+stroke-width: 1;
+}
+
+{% endblock %}
 {% block body %}
 <div class="jumbotron  jumbotron-fluid">
-  <h3 class="mt-5 text-uppercase text-center ">Stay Home Stay Safe</h3>
+    <h3 class="mt-5 text-uppercase text-center ">Stay Home Stay Safe</h3>
 </div>
 <div id="container"></div>
 
- {% endblock %}
- {% block scripts %}
-        // Create the chart
-        var data = {{ new_stats | safe}}
-        Highcharts.mapChart('container', {
-        chart: {
-             map: 'countries/in/custom/in-all-disputed',
-                      },
-     
-        title: {
-                 text: ''
-             },
-        colorAxis: {
-             min: 0
-         },
-        series: [{
-            data: data,
-            name: 'COVID-19 Total Cases',
-            cursor: 'pointer',
-            allowPointSelect: true,
-            
-            
-        states: {
-            itemStyle: {
-                color: '#efefef'
-                },    
-            hover: {
-                color: '#E57373'
-                
-            },
-            select: {
-                color: '#E57373',
-                borderColor: 'black',
-                dashStyle: 'dot'
-            }
+{% endblock %}
+{% block scripts %}
+// Create the chart
+var data = {{ new_stats | safe}}
+Highcharts.mapChart('container', {
+chart: {
+map: 'countries/in/custom/in-all-disputed',
+},
 
-        },
-        
-        dataLabels: {
-            enabled: false,
-            format: '{point.name}'
-        }
-        
-    }],
-    
+title: {
+text: ''
+},
+colorAxis: {
+min: 0
+},
+series: [{
+data: data,
+name: 'COVID-19 Active Cases',
+cursor: 'pointer',
+allowPointSelect: true,
+
+
+states: {
+itemStyle: {
+color: '#efefef'
+},
+hover: {
+color: '#E57373'
+
+},
+select: {
+color: '#E57373',
+borderColor: 'black',
+dashStyle: 'dot'
+}
+
+},
+
+dataLabels: {
+enabled: false,
+format: '{point.name}'
+}
+
+}],
+
 });
 
 {% endblock %}
