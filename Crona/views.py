@@ -26,7 +26,7 @@ def Home(request):
         stat = extract_contents(row.find_all('td'))
         if stat:
             stats.append(stat)
-    records = stats[36]
+    records = stats[35]
 
     active, Cured, Death, Confirmed = records[2:]
     print(records)
