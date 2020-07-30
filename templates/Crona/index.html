@@ -160,20 +160,20 @@ thead{
       <div class="container">
       <div class="box1 box">
            <p>Total</p>
-           <p><strong>{{ Confirmed}}</strong></p>
+           <p><strong>{{ ttl}}</strong></p>
       </div>
       <div class="box4 box">
         <p>Active</p>
-        <p><strong>{{ Active}}</strong></p>
+        <p><strong>{{ act}}</strong></p>
    </div>
 
       <div class="box2 box">
         <p>Cured</p>
-        <p><strong>{{ Cured}}</strong></p>
+        <p><strong>{{cur}}</strong></p>
       </div>
       <div class="box3 box">
         <p>Deaths</p>
-        <p><strong>{{ Death}}</strong></p>
+        <p><strong>{{de}}</strong></p>
       </div>
   </div>
       {% if performance %}
@@ -181,8 +181,8 @@ thead{
         {% for data in performance %}
             
           <li class=" list-group-item  id="data" ">
-           <span  class="state text-center ">{{data.1|truncatechars:22}}</span>
-           <span title="Total Cases" class="total animated infinite bounce delay-2s ">{{data.5}}</span>
+           <span  class="state text-center ">{{data.0|truncatechars:22}}</span>
+           <span title="Total Cases" class="total animated infinite bounce delay-2s ">{{data.1}}</span>
            <span title="Active Cases" class="active">{{data.2}}</span>
 
            <span title="Recover Cases" class="recover ">{{data.3}}</span>

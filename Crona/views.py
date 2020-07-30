@@ -6,58 +6,57 @@ from datetime import datetime
 import COVID19Py
 import requests
 from bs4 import BeautifulSoup
-
+'''
+    url = 'https://api.covid19india.org/data.json'
+    response = requests.get(url)
+    user = response.json()
+    for data in user['statewise']:
+        print(f"{data['state']} {data['active']}")
+'''
 
 def Home(request):
-    stats = []
-    States = []
-    Confirmed = []
-
-    def extract_contents(row): return [x.text.replace('\n', '') for x in row]
-    URL = 'https://www.mohfw.gov.in/'
-    SHORT_HEADERS = ['SNo', 'State', 'Indian-Confirmed',
-                     'Foreign-Confirmed', 'Cured',     'Death']
-    response = requests.get(URL).content
-    soup = BeautifulSoup(response, 'html.parser')
-    header = extract_contents(soup.tr.find_all('th'))
-    stats = []
-    all_rows = soup.find_all('tr')
-    for row in all_rows:
-        stat = extract_contents(row.find_all('td'))
-        if stat:
-            stats.append(stat)
-    records = stats[35]
-
-    active, Cured, Death, Confirmed = records[2:]
-    print(records)
-    Confirmed = (Confirmed.split('*')[0])
-    Cured = (Cured)
-    Death = (Death)
-    Active = (active)
-    stats = stats[0:35]
-    print(stats[1])
-    context = {'performance': stats, 'Confirmed': Confirmed,
-               'Cured': Cured, 'Death': Death, 'Active': Active}
+    state = []
+    confirmed = []
+    recovered = []
+    deaths = []
+    active = []
+    url = 'https://api.covid19india.org/data.json'
+    response = requests.get(url)
+    user = response.json()
+    for data in user['statewise']:
+        state.append(data['state'])
+        confirmed.append(data['confirmed'])
+        active.append(data['active'])
+        recovered.append(data['recovered'])
+        deaths.append(data['deaths'])
+    stats = zip(state[1:],confirmed[1:],active[1:],recovered[1:],deaths[1:])
+    ttl = confirmed[0]
+    act = active[0]
+    cur = recovered[0] 
+    de = deaths[0]    
+    context = {'performance': stats,'ttl':ttl, 'act':act, 'cur':cur, 'de':de}
     return render(request, "Crona/index.html", context)
 
 
 def MapView(request):
-    stats = []
-    States = []
-    Confirmed = []
-    def extract_content(row): return [x.text.replace('\n', '') for x in row]
-    URL = 'https://www.mohfw.gov.in/'
-    HEADINGS = ['SNO', 'State', 'Indian-Confirmed',
-                'Foreign-confirmed', 'Cured', 'Death']
-    response = requests.get(URL).content
-    soup = BeautifulSoup(response, 'html.parser')
-    header = extract_content(soup.tr.find_all('th'))
-    all_rows = soup.find_all('tr')
-    for row in all_rows:
-        stat = extract_content(row.find_all('td'))
-        stats.append(stat[1:5])
-    stats = stats[0:37]
-    new_stats = [[i[0].lower(), int(i[1])] for i in stats if len(i) != 0]
+    state = []
+    confirmed = []
+    recovered = []
+    deaths = []
+    active = []
+    url = 'https://api.covid19india.org/data.json'
+    response = requests.get(url)
+    user = response.json()
+    for data in user['statewise']:
+        state.append(data['state'])
+        confirmed.append(data['confirmed'])
+        active.append(data['active'])
+        recovered.append(data['recovered'])
+        deaths.append(data['deaths'])
+
+    maps = list(map(list, zip(state,confirmed)))
+    new_stats = [[i[0].lower(), int(i[1])] for i in maps if len(i) != 0]
+    
     new_stats.pop()
     for i in new_stats:
         if i[0] == 'delhi':
@@ -68,8 +67,7 @@ def MapView(request):
             i[0] = 'arunanchal pradesh'
         if i[0] == 'andaman and nicobar islands':
             i[0] == 'andaman and nicobar'
-    print(new_stats)
-    return render(request, "Crona/mapview.html", {'new_stats': new_stats})
+    return render(request, "Crona/mapview.html",{'new_stats': new_stats} )
 
 
 def News(request):
