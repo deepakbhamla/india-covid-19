@@ -1,7 +1,7 @@
 Django == 3.0.7
 COVID19Py == 0.3.0
 newsapi-python == 0.2.6
-Pillow == 7.1.1
+Pillow == 8.2.0
 datetime == 4.3.0
 bs4 
 requests == 2.23.0
